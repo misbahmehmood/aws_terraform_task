@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg" {
-    name = "publicsg"
+    name = "instance_sg"
     description = "Allow inbound traffic"
     vpc_id = var.vpc_id
 
@@ -24,7 +24,32 @@ resource "aws_security_group" "sg" {
     }
 
     tags = {
-        Name = "sg1"
+        Name = "instance_sg"
     }  
 
+}
+
+
+resource "aws_security_group" "sg" {
+    name = "elb_sg"
+    description = "Allow traffic to instances through Load Balancer"
+    vpc_id = var.vpc_id
+
+    ingress {
+    from_port   = var.elb_port
+    to_port     = var.elb_port
+    protocol    = "tcp"
+    cidr_blocks = var.cidr
+  }
+
+  egress {
+    from_port       = var.outbound-port
+    to_port         = var.outbound-port
+    protocol        = "-1"
+    cidr_blocks     = var.cidr
+  }
+
+  tags = {
+    Name = "ELB Security Group"
+  }
 }

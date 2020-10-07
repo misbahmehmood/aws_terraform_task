@@ -20,3 +20,9 @@ module "launch_config" {
     vpc_security_group_ids = ["${module.sg.sg_id}"]
 
 }
+
+module "elb" {
+    source = "./ELB"
+    vpc_security_group_ids = ["${module.sg.sg_id}"]
+
+}
