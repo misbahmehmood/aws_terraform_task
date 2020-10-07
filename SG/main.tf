@@ -30,7 +30,7 @@ resource "aws_security_group" "sg" {
 }
 
 
-resource "aws_security_group" "sg" {
+resource "aws_security_group" "elb_sg" {
     name = "elb_sg"
     description = "Allow traffic to instances through Load Balancer"
     vpc_id = var.vpc_id

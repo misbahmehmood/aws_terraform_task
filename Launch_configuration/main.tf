@@ -1,4 +1,4 @@
-resource "aws_launch_configuration" "web" {
+resource "aws_launch_configuration" "terraform_LC" {
   image_id = var.ami 
   instance_type = var.instance_type
   key_name = var.key_name

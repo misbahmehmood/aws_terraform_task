@@ -23,6 +23,16 @@ module "launch_config" {
 
 module "elb" {
     source = "./ELB"
-    vpc_security_group_ids = ["${module.sg.sg_id}"]
+    elb_security_group_ids = ["${module.sg.ELBsg_id}"]
+    subnet1_id       = module.vpc.subnet1_id
+    subnet2_id      = module.vpc.subnet2_id
 
+}
+
+module "auto_scaling" {
+    source = "./Autoscaling_group"
+    launch_config = module.launch_config.launch_config_name
+    load_balancer = module.elb.elb_id 
+    subnet1_id       = module.vpc.subnet1_id
+    subnet2_id      = module.vpc.subnet2_id
 }

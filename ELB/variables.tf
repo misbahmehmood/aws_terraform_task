@@ -8,4 +8,5 @@ variable "subnet2_id" {
 
 variable "elb_security_group_ids" {
   default = "default value"
+  
 }

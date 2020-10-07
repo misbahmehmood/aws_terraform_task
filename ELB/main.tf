@@ -1,7 +1,7 @@
 resource "aws_elb" "terraform_elb" {
   name = "terraform-elb"
   security_groups = var.elb_security_group_ids
-  subnets = [var.subnet1_id, subnet2_id]
+  subnets = [var.subnet1_id, var.subnet2_id]
   
   listener {
     lb_port = 80
