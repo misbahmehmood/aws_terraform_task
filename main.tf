@@ -14,3 +14,9 @@ module "sg" {
   vpc_id = module.vpc.vpc
 
 }
+
+module "launch_config" {
+    source = "./Launch_configuration"
+    vpc_security_group_ids = ["${module.sg.sg_id}"]
+
+}
