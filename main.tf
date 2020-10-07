@@ -8,3 +8,9 @@ provider "aws" {
 module "vpc" {
   source = "./VPC"
 }
+
+module "sg" {
+  source = "./SG"
+  vpc_id = module.vpc.vpc
+
+}
