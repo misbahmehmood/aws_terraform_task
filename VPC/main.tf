@@ -1,4 +1,4 @@
-esource "aws_vpc" "terraform_vpc" {
+resource "aws_vpc" "terraform_vpc" {
     cidr_block = var.cidr_block
     enable_dns_hostnames = var.enable_dns_hostname
 
