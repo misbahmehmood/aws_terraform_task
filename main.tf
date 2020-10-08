@@ -23,7 +23,7 @@ module "launch_config" {
 
 module "elb" {
     source = "./ELB"
-    elb_security_group_ids = ["${module.sg.ELBsg_id}"]
+    elb_security_group_ids = ["${module.sg.sg_id}"]
     subnet1_id       = module.vpc.subnet1_id
     subnet2_id      = module.vpc.subnet2_id
 
