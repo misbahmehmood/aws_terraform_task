@@ -4,6 +4,10 @@ variable "ingress_ports" {
   default     = [22, 443, 80]
 }
 
+variable "elb_port" {
+  description = "Allow http"
+  default     = "80"
+}
 
 variable "cidr" {
     description     =   "CIDR block open to the internet"
