@@ -1,7 +1,8 @@
 #!/bin/bash
 sudo apt update -y
 sudo apt install nginx -y
-sudo cat > /var/www/html/index.nginx-debian.html << EOF
+chmod 644 /var/www/html/index.nginx-debian.html
+cat > /var/www/html/index.nginx-debian.html << EOF
 <!DOCTYPE html>
 <html>
 

@@ -36,8 +36,8 @@ resource "aws_security_group" "elb_sg" {
     vpc_id = var.vpc_id
 
     ingress {
-    from_port   = var.elb_port
-    to_port     = var.elb_port
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = var.cidr
   }
