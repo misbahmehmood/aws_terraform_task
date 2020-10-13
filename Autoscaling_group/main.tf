@@ -4,7 +4,6 @@ resource "aws_autoscaling_group" "terraform_asg" {
   desired_capacity          = 2
   max_size                  = 3
 
-  health_check_grace_period = 300
   health_check_type         = "ELB"
   
   launch_configuration      = var.launch_config
