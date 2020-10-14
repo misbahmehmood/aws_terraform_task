@@ -54,6 +54,7 @@ At least 2 instances were required for the brief, the autoscaling group desired 
 
 # Load Balancer
 A classic load balancer is used to complete this project. It balances the instances created through the autoscaling group across the 2 subnets. The web page is accessed using the dns name of the load balancer to show the requests are going through load balancer. 
+I have also allowed the load balancer to wait 3 minutes after the creation of the load balancer and the output of the load balancer dns name to give enough time for the instances to run. Therefore, at the time of the loadbalancer dns_name output, it can be used immediately to access the web page. 
 
 # Host/Web server
 Again, to keep costs minimal and make the most out of the AWS free tier resources, I used t2.micro Ubuntu 18.04 instance. 

@@ -4,7 +4,7 @@
 sudo apt update -y
 sudo apt install nginx -y
 
-# changing permissions to allow owner read write permissions to default html file
+# changing permissions to only allow owner read write permissions to default html file
 chmod 644 /var/www/html/index.nginx-debian.html
 cat > /var/www/html/index.nginx-debian.html << EOF
 <!DOCTYPE html>
