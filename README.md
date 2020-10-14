@@ -45,11 +45,25 @@ The VPC holds all the AWS resources including the subnets, route table and inter
 ## Subnets
 2 Subnets are created in different availability zones to make this infrastructure highly available. The subnets are linked to a route table and internet gateway. 
 # Security Groups
-Two security groups are used, one is used for the instances based on the launch configuration and the other for the load balancer to allow for easier changes and adjustments to security. The lauch configuration security group allows Port 22 to gain access into the instance using SSH. Both security groups allow Port 80 in order to access the web page using HTTP. 
+Two security groups are used, one is used for the instances based on the launch configuration and the other for the load balancer to allow for easier changes and adjustments to security. The lauch configuration security group allows Port 22 to gain access into the instances using SSH. Both security groups allow Port 80 in order to access the web page using HTTP. 
 
-To meet the secure aspect of the brief, I initially wanted to use https protocol. To allow https, a domain name was needed to get an ssl certificate. To keep costs minimal and not have to buy a domain name, I decided against this and opted for a proxy method instead.
+To meet the secure aspect of the brief, I initially wanted to use HTTPS protocol. To allow HTTPS, a domain name was needed for an ssl certificate. To keep costs minimal and not have to buy a domain name, I decided against this and opted to use Nginx for its benefits. 
 
 # Autoscaling
+At least 2 instances were required for the brief, the autoscaling group desired instance size is kept at 2 with minimum instances at 2 to ensure there are always at least 2 instances running. The autoscaling group is scaling across different availability zones, which is taken from the subnets. 
+
 # Load Balancer
+A classic load balancer is used to complete this project. It balances the instances created through the autoscaling group across the 2 subnets. The web page is accessed using the dns name of the load balancer to show the requests are going through load balancer. 
+
 # Host/Web server
+Again, to keep costs minimal and make the most out of the AWS free tier resources, I used t2.micro Ubuntu 18.04 instance. 
+This is provided in the launch configuration which acts as a template for the autoscaling group to use and base the instances on. A key pair is also provided, which can be changed, to SSH into the instances if required. 
+
+A script file 'web_server.sh' is added to install nginx and create a new default layout for the launch configuration. This is shown in the image below:
+![image](https://raw.githubusercontent.com/misbahmehmood/aws_terraform_task/readme/images/nginx%20webpage.png)
+
+I decided to use Nginx as the web server because I had used it in previous projects for its reverse proxy and load balancing capabilities. To make the web page secure, I felt that using NGINX would add an additional security level and could be configured to be used as a reverse proxy to keep the web page secure. As well as this, NGINX also has support for open source web application firewalls such as Naxsi and Modsecurity which can be installed to detect and block suspicious behaviour. 
+
 # Modules
+The use of modules were one of the points mentioned in the brief. I have included modules in terraform to keep in line with best practices. 
+Modules make for better readability, maintenance and reusability of code. 
