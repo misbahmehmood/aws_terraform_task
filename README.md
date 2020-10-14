@@ -37,7 +37,7 @@ I decided to use AWS due to having more exposure and experience with AWS. In ord
 To help me with this, I created a visual architecture design in order to gain a full understanding on all the different aspects that were needed and how they would interact with each other.  
 This diagram shows the different resources that were used:
 
-![image](https://raw.githubusercontent.com/misbahmehmood/aws_terraform_task/images/architecture.png)
+![image](https://raw.githubusercontent.com/misbahmehmood/aws_terraform_task/main/images/architecture.png)
 
 # VPC
 The VPC holds all the AWS resources including the subnets, route table and internet gateway so that the web page is accessible from the open internet. All resources are created in the Ireland region eu-west-1. 
@@ -61,7 +61,7 @@ Again, to keep costs minimal and make the most out of the AWS free tier resource
 This is provided in the launch configuration which acts as a template for the autoscaling group to use and base the instances on. A key pair is also provided, which can be changed, to SSH into the instances if required. 
 
 A script file 'web_server.sh' is added to install nginx and create a new default layout for the launch configuration. This is shown in the image below:
-![image](https://raw.githubusercontent.com/misbahmehmood/aws_terraform_task/readme/images/nginx%20webpage.png)
+![image](https://raw.githubusercontent.com/misbahmehmood/aws_terraform_task/main/images/nginx%20webpage.png)
 
 I decided to use Nginx as the web server because I had used it in previous projects for its reverse proxy and load balancing capabilities. To make the web page secure, I felt that using NGINX would add an additional security level and could be configured to be used as a reverse proxy to keep the web page secure. As well as this, NGINX also has support for open source web application firewalls such as Naxsi and Modsecurity which can be installed to detect and block suspicious behaviour. 
 
